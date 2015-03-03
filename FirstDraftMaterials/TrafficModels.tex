@@ -1,0 +1,103 @@
+\documentclass{article}
+
+\usepackage{amsmath}
+\usepackage{mathtools}
+\setlength\parindent{0pt}
+
+\begin{document}
+
+\section{Traffic Flow}
+
+To model cars moving on a one-way highway without exits, entrances, or passing, we can use the fact that the quantity (or density) of cars must be conserved:
+
+\[ \frac{d}{dt} \int_{x_1}^{x_2} \rho(x,t) dt = -\Bigg[ f\Big(\rho(x,t)\Big) \Bigg]_{x_1}^{x_2} \] \\
+
+In differential form, this becomes:
+
+\[ \rho_t + f \Big( \rho(x,t) \Big)_x = 0 \] \\
+
+In light traffic conditions velocity might only depend upon $x$.  Therefore the flux function becomes $f(\rho(x,t)) = \rho(x,t) u(x)$:
+
+\[ \rho_t + (\rho u)_x = 0 \] \\
+
+In more congested traffic, velocity may depend more upon density than $x$, so that $u = U(\rho)$.  The flux function then becomes $f(\rho(x,t)) = \rho(x,t) U(\rho(x,t))$:
+
+\[ \rho_t + \Big( \rho U(\rho) \Big)_x = 0 \] \\
+
+This is the LWR model, proposed by Lighthill and Whitham (1955) and Richards (1956).  Here $U(\rho)$ is the preferred velocity, a given non increasing function of $\rho$, nonnegative for $\rho$ between 0 and some positive maximum density $\rho_m$. (WOULD IT MAKES SENSE FOR IT TO BE 1? CHECK THE TEXTBOOK...). \\
+
+This model behaves well macroscopically, but does have some flaws.  For example, it does not describe what happens to cars as they travel through shocks.  Realistically, we know that cars cannot change their velocities instantaneously, so one way to try to improve the model would be to eliminate the presence of shocks.  This can be done by adding adding a diffusion term:
+
+\[ \rho_t + \Big( \rho U(\rho) \Big)_x = \mu \rho_{xx} \] \\
+
+where $\mu$ is a positive constant.  This term is supposed to account for the driver's awareness of the road ahead.  (Though as Daganzo points out, it also implies that drivers are aware of conditions behind, which is a problem).  (REALISTICALLY DRIVERS ARE AWARE OF WHAT IS GOING ON BEHIND THEM, THOUGH IT MAY NOT HAVE AS STRONG OF AN AFFECT ON HOW THEY DRIVE).  This added term causes problems as it predicts negative velocities in some instances, which is obviously wrong.
+
+\section{Compressible Gas Dynamics}
+
+Another attempt to improve the LWR model is to try to capture more of they dynamics present by adding another equation.  Treating traffic as a compressible gas, we can use equations for the conservation of mass and conservation of momentum used to model gas dynamics.  For conservation of mass, we can use one of the equation we derived above, where the flux function is $f = \rho u$:
+
+\[ \rho_t + (\rho u)_x = 0 \] \\
+
+For conservation of momentum, the flux function includes the contribution of the flux of momentum $\rho u^2$ and a pressure term $p$, where pressure is a function of density.  (DESCRIBE HOW THIS FUNCTION BEHAVES).  The integral form of this conservation law is:
+
+\[ \frac{d}{dt} \int_{x_1}^{x_2} \rho(x,t) u(x,t) dx = -\Big[ \rho u^2 + p \Big]_{x_1}^{x_2} \] \\
+
+In differential form this equation becomes: 
+
+\[ (\rho u)_t + (\rho u^2 + p)_x = 0 \] \\
+
+Combining the differential forms of these two equations, we can rewrite the second equation in terms of velocity instead of momentum: 
+
+\begin{align*}
+0 &= (\rho u)_t + (\rho u^2 + p)_x \\[1ex]
+&= \rho_t u + \rho u_t + \rho_x u^2 + 2 \rho u u_x + p_x \\[1ex]
+&= \left( -\rho_x u - \rho u_x \right) u + \rho u_t + \rho_x u^2 + 2 \rho u u_x + p_x \\[1ex]
+&= \rho u_t + \rho u u_x + p_x \\[1ex]
+&= u_t + u u_x + \frac{p_x}{\rho} 
+\end{align*}
+
+\section{PW Model}
+
+By modifying these equations for conservation of mass and momentum in gas dynamics, both Payne (1971) and Whitham (1974) attempted to improve upon the LWR model with the 2-equation model: 
+
+\[ \left\{ \begin{matrix*}[l] & \rho_t + (\rho u)_x = 0 \\[2ex] & u_t + u u_x + \dfrac{p'(\rho)}{\rho} \rho_x = \dfrac{U(\rho) - u}{
+\tau} + \mu u_{xx} \end{matrix*} \right. \] \\
+
+Here we have the two conservation laws with two additional terms in the second equation.  The first represents a relaxation towards a preferred velocity (EQUILIBRIUM VELOCITY) $U(\rho)$, where $\tau$ is (I DON'T REMEMBER, THE REACTION TIME?) and the second is a diffusion term, as discussed previously (though here it is applied to velocity instead of density).  (ONE OF THE PAPERS I READ MENTIONED THAT IN THE LIMIT THAT TAU GOES TO 0, THESE EQUATIONS REDUCE TO THE VISCUOUS LWR MODEL MENTIONED ABOVE.) \\
+
+At first look, this seems like a reasonable model, since macroscopically cars can behave like a compressible gas.  However, there are some problematic assumptions made by the model which can produce unrealistic results, such as negative velocities.  WHAT ARE ALL OF THE PROBLEMS?  (CARS AND GAS MOLECULES ARE FUNDAMENTALLY DIFFERENT, CARS DON'T GO BACKWARDS ON THE FREEWAY, THEY ARE MOSTLY INFLUENCED BY WHAT IS IN FRONT OF THEM AND NOT BEHIND, CARS (DRIVERS) CAN HAVE DIFFERENT PERSONALITIES, PLATOONS...)
+
+\[ \begin{pmatrix} \rho \\[1ex] u \end{pmatrix}_t + \begin{pmatrix} u & \rho \\[1ex] \dfrac{p'(\rho)}{\rho} & u \end{pmatrix} \begin{pmatrix} \rho \\[1ex] u \end{pmatrix}_x = \begin{pmatrix} 0 \\[1ex] \dfrac{U(\rho) - u}{\tau} + \mu u_{xx} \end{pmatrix} \] \\
+
+\[ \lambda_1 = u - c,  \, r_1 = \begin{pmatrix} \rho \\ -c \end{pmatrix} \hspace{1em} \lambda_2 = u + c, \, r_2 = \begin{pmatrix} \rho \\ c \end{pmatrix} \] \\
+
+where $c = \sqrt{p'(\rho)}$, the traffic sound speed.  We see from the second eigenvalue that some information is moving faster than the velocity of the cars, which implies that drivers are influenced by what is going on behind them.
+
+\section{Improved Model}
+
+As A. Aw and M. Rascle point out in their paper, the anticipation factor (TERM WITH PRESSURE), involves the derivative of pressure with respect to $x$.  However, we should instead be concerned with the perspective of the driver, which is relative to a moving timeframe.  (THOUGHT EXPERIMENT IN PAPER).  In this case, we should really be using a convective derivative $\partial_t + u \partial_x$ of the pressure.  In this case, we can consider the model: 
+
+\[ \left\{ \begin{matrix*}[l] \rho_t + (\rho u)_x = 0 \\[1ex] (u + p)_t + u (u + p)_x = 0 \end{matrix*} \right. \] \\
+
+SHOULD I ALWAYS WRITE P AS A FUNCTION OF RHO, OR IS IT OKAY TO LEAVE IT OUT??? ALSO NEED TO MENTION THAT WE ARE ASSUMING THESE FUNCTIONS ARE SMOOTH/DIFFERENTIABLE
+
+This can also be rewritten as a system of two equations, one for density and the other for velocity:
+
+\begin{align*}
+0 &= (u + p)_t + v (v + p)_x \\[1ex]
+&= u_t + p'(\rho) \rho_t + u u_x + u p'(\rho) \rho_x \\[1ex]
+&= u_t + p'(\rho) (-\rho_x u - \rho u_x) + u u_x + u p'(\rho) \rho_x \\[1ex]
+&= u_t + (u - p'(\rho) \rho) u_x 
+\end{align*}
+
+Second-order model:
+
+\[ \begin{pmatrix} \rho \\[1ex] u \end{pmatrix}_t + \begin{pmatrix} u & \rho \\[1ex] 0 & u - \rho p'(\rho) \end{pmatrix} \begin{pmatrix} \rho \\[1ex] u \end{pmatrix}_x = 0 \] \\
+
+This model conserves density and "momentum": $y = \rho u + \rho p(\rho)$ (WE CAN REWRITE THE EQUATIONS IN CONSERVATION FORM...) In this case, $y$ doesn't seem to have an important physical meaning... \\
+
+Where the PW model failed, this model performs well, though it still doesn't perfectly capture what happens in light traffic conditions.  We can show with the eigenvalues that no information travels faster than the speed of the cars.  We can demonstrate through an example where the PW predicts negative velocities that this model still produces reasonable results.  \\
+
+One moral of the story: Adding complexity does not guarantee improved accuracy.  The assumptions you make when you design your model must agree with the dynamics you are trying to capture.  In this case, assumptions that can be made about gas particles cannot be applied to traffic conditions.  This is one reason why the PW model fails to improve the LWR model.  ONE PAPER HAD CONDITIONS FOR WHAT CONSTITUTES A GENUINE IMPROVEMENT.  However, the authors of the second paper laid out what conditions must be satisfied for modeling traffic, and they tested their model against these conditions to show that their assumptions were indeed valid.  
+
+\end{document}
