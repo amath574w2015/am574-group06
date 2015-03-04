@@ -1,5 +1,3 @@
-function y = variableSetup
-
 global v_star rho_star p pprime rho
 
 % Declaring various starting values
