@@ -3,6 +3,7 @@
 \usepackage{amsmath}
 \usepackage{mathtools}
 \usepackage{subfigure}
+\usepackage{enumerate}
 \setlength\parindent{0pt}
 
 \setlength{\textwidth}{6.2in}
@@ -16,20 +17,78 @@
 
 \begin{document}
 
+% Introduction
 \section{Introduction}
-Kelsey
+When a model is called ``higher order", we usually associate it with being more accurate than a first order model.  This is not always the case.  Adding complexity to a model does not necessarily improve it, as is demonstrated in the class of higher order traffic models developed with the intention of improving the first order traffic model proposed by Lighthill and Whitham (1955) and Richards (1956).  As Daganzo observes in his paper, \\
+
+``A new theory (e.g. relativity) is deemed successful if it explains previously unexplained phenomena, plus everything else that was correctly explained with the theory it intends to replace (e.g. Newtonian physics).  In the case of traffic flow, the new theories (high-order fluid models) fail to explain the behavior of traffic at the end of a queue (unlike the simpler, older LWR model; which explains it perfectly)." \\
+
+In this paper we examine the second order traffic model developed by Payne (1971) and Whitham (1974) which was meant to improve how the LWR model explains traffic behavior near shocks.  Their model takes its form from equations used to describe compressible fluid dynamics.  Unfortunately, cars and fluid particles have some fundamental differences which make the model actually perform worse than the LWR model in certain cases.  For example, by smoothing out discontinuities, the PW model predicts negative velocities, which is clearly a problem.  \\
+
+In addition to considering the PW model, we also take a look a more successful model proposed by Aw and Rascle (2000).  These authors challenge some of the assumptions of the PW model and suggest the use of a convective derivative to fix the problem of negative velocities.  In order to verify that their model is valid, they test their new model against criteria they claim any reasonable model will satisfy.  
+
+% LWR Model
 \section{LWR Model}
-Kelsey
+We can start by considering a first order (one equation) model of traffic flow on a one-way highway without any exits, entrances, or passing.  In this case, we can expect that the number of cars will be conserved, so we can use the equation for conservation of mass (with density $\rho$ and velocity $v$):
+
+\begin{enumerate}[(a)]
+\item Integral form of equation: $\displaystyle \frac{d}{dt} \int_{x_1}^{x_2} \rho \, dt = -\Big[ f( \rho ) \Big]_{x_1}^{x_2}$
+\item Differential form of equation: $\rho_t + f( \rho )_x = 0$
+\begin{enumerate}[i]
+\item Light traffic: $\rho_t + (\rho v)_x = 0$
+\item Congested traffic: $\rho_t + \Big( \rho V(\rho) \Big)_x = 0$ (LWR model)
+\end{enumerate}
+\end{enumerate}
+
+The LWR behaves well macroscopically, but it does have some flaws.  For example, it assumes cars change their velocity instantaneously as they travel through shocks.  One way to eliminate shocks would be to add a diffusion term: $\rho_t + \Big( \rho V(\rho) \Big)_x = \mu \rho_{xx}$.  This term is meant to account for the drivers awareness of the road ahead.  However, this model can be shown to predict negative velocities in some instances, which is obviously wrong.
+
+% PW Model
 \section{PW Model}
 
+% PW Model: Theory
 \subsection{Theory}
-Kelsey
+Another approach to improving the LWR model would be to use a second order (two equation) model. Since cars can be thought of as a compressible gas, we can use equations for conservation of mass (above) and conservation of momentum, $\rho v$, used to model compressible gas flow:
+
+\begin{enumerate}[(a)]
+\item Integral form of equation: $\displaystyle \frac{d}{dt} \int_{x_1}^{x_2} \rho v \, dt = -\Big[ f( \rho v ) \Big]_{x_1}^{x_2}$
+\item Differential form of equation: $(\rho v)_t + f( \rho v )_x = (\rho v)_t + \Big( \rho v^2 + \rho \Big)_x = 0$
+\end{enumerate}
+
+We can rewrite the second equation in terms of velocity instead of momentum: $v_t + v v_x + \dfrac{p'(\rho)}{\rho} \rho_x = 0$. \\
+
+The PW model is a modification of these equations for conservation of mass and conservation of momentum in gas dynamics, with added relaxation and diffusion terms: 
+
+\[ \left\{ \begin{matrix*}[l] & \rho_t + (\rho v)_x = 0 \\[1ex] & v_t + v v_x + \dfrac{p'(\rho)}{\rho} \rho_x = \dfrac{V(\rho) - v}{\tau} + \mu v_{xx} \end{matrix*} \right. \]
+
+At first glance, this seems like a reasonable model.  However, there a couple of fundamental differences between gas particles and cars that could be problematic.  For example, as pointed out by Daganzo, ``a fluid particle responds to stimuli from the front and from behind, but a car is an anisotropic particle that mostly responds to frontal stimuli."  If we consider the eigenvalues of the Jacobian matrix of the linearized system, we see that one of the eigenvalues, $\lambda_2 = v + \sqrt{p'(\rho)}$, represents information traveling faster than the velocity of cars in the system.  This implies that traffic conditions are partially determined by what is going on behind.
+
+% PW Model: Hugoniot Loci and Integral Curves
 \subsection{Hugoniot Loci and Integral Curves}
 Brisa
+
+% AR Model
 \section{AR Model}
 
+% AR Model: Theory
 \subsection{Theory}
-Kelsey
+Another issues with the PW model, as Aw and Rascle point out in their paper, is that there is no conservation of momentum in car traffic.  Instead, the term involving pressure is mean to represent an anticipation factor, or how a driver would react to a variation in the concentration of cars with respect to space.   However, what we should really be concerned with is the perspective of the driver, which is relative to a moving timeframe.  In this case, we should be using a convective derivative, $\partial_t + v \partial_x$, of the pressure.  The new model becomes:
+
+\[ \left\{ \begin{matrix*}[l] & \rho_t + (\rho v)_x = 0 \\[1ex] & (v + p)_t + v (v + p)_x = 0 \end{matrix*} \right. \]
+
+The second equation can also be rewritten as an equation for velocity: $v_t + \Big(v - \rho p'(\rho)\Big)v_x = 0$. \\
+
+This updated model no longer conserves momentum.  Instead, it conserves the quantity $y = v + p(\rho)$, which we can see if we rearrange the second equation to a conservation form: $(\rho (v + p(\rho)))_t + (\rho v(v + p(\rho)))_x = 0$. While the authors admit that there is no obvious physical interpretation of this quantity, they claim that it is the most natural pair of conservative variables. \\
+
+The authors also claim that their improved model satisfies the following important conditions:
+\begin{enumerate}
+\item The system is hyperbolic.
+\item When solving the Riemann problem with bounded nonnegative data $(\rho, v)$, the density and velocity must remain nonnegative and bounded from above.
+\item When solving the Riemann problem, no waves connecting any state to its left (behind it) can have a propagation speed greater than the velocity $v$.
+\item The solution to the Riemann problem must agree with qualitative properties that drivers actually experience: braking produces shock waves and acceleration produces rarefaction waves.
+\item Near a vacuum, the solution to the Riemann problem must be sensitive to the data.
+\end{enumerate}
+
+% AR Model: Hugoniot Loci and Integral Curves
 \subsection{Hugoniot Loci and Integral Curves}
 The AR model starts from the system
 \begin{align}
@@ -158,6 +217,7 @@ s = \frac{\rho_*v_* - \rho v}{\rho_* - \rho}.
    both curves for a given point in each plane.}
 \end{figure}
 
+% Examples
 \section{Examples}
 Brisa
 
