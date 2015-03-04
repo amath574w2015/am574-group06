@@ -3,7 +3,9 @@
 %         validity - boolean indicating whether or not validity is being
 %                    considered
 % Generates 3 plots: curves for lambda1, curves for lambda2, and both
-% curves for a given point.
+% curves for a given point if validity = false. curves for lambda1 with
+% contour lines overlayed, and valid shocks and rarefactions for ql and qr
+% if validity = true.
 % Note: expects that the function "variableSetup" has been run.
 
 function Mfigs = MPlot(model,validity)
