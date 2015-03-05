@@ -54,26 +54,16 @@ subroutine rp1(maxmx,meqn,mwaves,maux,mbc,mx,ql,qr,auxl,auxr,wave,s,amdq,apdq)
     !     # compute  Roe-averaged quantities:
         rbar = 0.5d0*(qr(1,i-1) + ql(1,i))
         cbar = dsqrt(gamma*rbar**(gamma-1.0d0))
-        if (rbar == 0) then
-            ubar = 0
-        else
-            ubar = (qr(2,i-1)*dsqrt(qr(1,i-1)) + ql(2,i)*dsqrt(ql(1,i)))/ &
+        ubar = (qr(2,i-1)/dsqrt(qr(1,i-1)) + ql(2,i)/dsqrt(ql(1,i)))/ &
             ( dsqrt(qr(1,i-1)) + dsqrt(ql(1,i)) )
-        endif
-
 
     !     # delta(1)=rho(i)-rho(i-1) and  delta(2)=rho*v(i)-rho*v(i-1)
         delta(1) = ql(1,i) - qr(1,i-1)
         delta(2) = ql(2,i) - qr(2,i-1)
 
     !     # Compute coeffs in the evector expansion of delta(1),delta(2)
-        if (cbar == 0) then
-            a1 = 0
-            a2 = 0
-        else
-            a1 = 0.5d0*(-delta(2) + (ubar + cbar) * delta(1))/cbar
-            a2 = 0.5d0*( delta(2) - (ubar - cbar) * delta(1))/cbar
-        endif
+        a1 = 0.5d0*(-delta(2) + (ubar + cbar) * delta(1))/cbar
+        a2 = 0.5d0*( delta(2) - (ubar - cbar) * delta(1))/cbar
 
     !     # Finally, compute the waves.
         wave(1,1,i) = a1

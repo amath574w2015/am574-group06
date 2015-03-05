@@ -44,7 +44,7 @@ def setplot(plotdata):
     plotaxes = plotfigure.new_plotaxes()
     plotaxes.axescmd = 'subplot(2,1,2)'   # bottom figure
     plotaxes.xlimits = 'auto'
-    plotaxes.ylimits = [-0.2,0.15]
+    plotaxes.ylimits = [-0.15,0.15]
     plotaxes.title = 'momentum (rho*v)'
 
     # Set up for item on these axes:
