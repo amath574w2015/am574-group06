@@ -57,7 +57,7 @@ if (model == 1)
         % Creating contours for lambda1 = v - p'(rho)*rho
         % Solving for v gives v = lambda1 + p'(rho)*rho
         % So, rho*v = rho*(lambda1 + p'(rho)*rho)
-        lambda = [0 0.3 0.6];
+        lambda = [0 0.3 0.5];
         for h = 1:length(lambda)
             for k = 1:length(rho)
                 contourM(h,k) = rho(k)*(lambda(h) + pprime(rho(k))*rho(k));
@@ -66,24 +66,25 @@ if (model == 1)
         
         hold on
         plot(rho,contourM,'m')
-        text(0.26,0.85,'\lambda_1 = 0','FontSize',size_font)
+        contourM(1,:)
+        text(0.18,0.85,'\lambda_1 = 0.5','FontSize',size_font)
         text(1.8,0.85,'\lambda_1 = 0.3','FontSize',size_font)
-        text(3.6,0.85,'\lambda_1 = 0.6','FontSize',size_font)
+        text(3.6,0.85,'\lambda_1 = 0','FontSize',size_font)
         
         % Finding index for given point 
         switch_index = find(rho==rho_star(state));
         
         % Plotting valid states for ql
         Mfigs(2) = figure;
-        plot(rho(1:switch_index),rv1(state,1:switch_index),'r')
-        hold on
-        plot(rho(switch_index:end),rv1(state,switch_index:end),'g')
-        
-        % Plotting valid states for qr
-        Mfigs(3) = figure;
         plot(rho(1:switch_index),rv1(state,1:switch_index),'g')
         hold on
         plot(rho(switch_index:end),rv1(state,switch_index:end),'r')
+        
+        % Plotting valid states for qr
+        Mfigs(3) = figure;
+        plot(rho(1:switch_index),rv1(state,1:switch_index),'r')
+        hold on
+        plot(rho(switch_index:end),rv1(state,switch_index:end),'g')
         
         for k = 2:3
             figure(Mfigs(k))

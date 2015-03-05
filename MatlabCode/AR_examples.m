@@ -41,14 +41,14 @@ for example = 1:2
         x = rho_star(state) + 0.009;
         y = rho_star(state)*v_star(state)-0.007;
         if (k == 1)
-            plot(rho(1:switch_index),rv1(state,1:switch_index),'r')
-            hold on
-            plot(rho(switch_index:end),rv1(state,switch_index:end),'g')
-            text(x,y,'$m_l$','Interpreter', 'latex','FontSize',size_font)
-        else
             plot(rho(1:switch_index),rv1(state,1:switch_index),'g')
             hold on
             plot(rho(switch_index:end),rv1(state,switch_index:end),'r')
+            text(x,y,'$m_l$','Interpreter', 'latex','FontSize',size_font)
+        else
+            plot(rho(1:switch_index),rv1(state,1:switch_index),'r')
+            hold on
+            plot(rho(switch_index:end),rv1(state,switch_index:end),'g')
             text(x,y,'$m_r$','Interpreter', 'latex','FontSize',size_font)
         end
         
