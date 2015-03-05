@@ -64,8 +64,8 @@ end
 % Formatting figures
 for k = 1:length(Yfigs)
     figure(Yfigs(k))
-    hXLabel = xlabel('\rho');
-    hYLabel = ylabel('y');
+    hXLabel = xlabel('$\rho$','Interpreter','latex');
+    hYLabel = ylabel('$y$','Interpreter','latex');
     set([hXLabel, hYLabel], 'FontSize', size_font);
     set(gca,'FontSize',size_font)
     set(gcf, 'Color', 'w');

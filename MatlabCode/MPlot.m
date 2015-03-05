@@ -66,10 +66,9 @@ if (model == 1)
         
         hold on
         plot(rho,contourM,'m')
-        text(0.3,0.85,'\lambda_1 = 0','FontSize',size_font)
+        text(0.26,0.85,'\lambda_1 = 0','FontSize',size_font)
         text(1.8,0.85,'\lambda_1 = 0.3','FontSize',size_font)
         text(3.6,0.85,'\lambda_1 = 0.6','FontSize',size_font)
-        
         
         % Finding index for given point 
         switch_index = find(rho==rho_star(state));
@@ -95,9 +94,9 @@ if (model == 1)
             y = rho_star(state)*v_star(state)-0.005;
             
             if (k == 2)
-                text(x,y,'q_l','FontSize',size_font)
+                text(x,y,'$m_l$','Interpreter','latex','FontSize',size_font)
             else
-                text(x,y,'q_r','FontSize',size_font)
+                text(x,y,'$m_r$','Interpreter','latex','FontSize',size_font)
             end
             
             axis([0 .7 0 .1])
@@ -117,8 +116,8 @@ end
 % Formatting figures
 for k = 1:length(Mfigs)
     figure(Mfigs(k))
-    hXLabel = xlabel('\rho');
-    hYLabel = ylabel('m = \rho v');
+    hXLabel = xlabel('$\rho$','Interpreter','latex');
+    hYLabel = ylabel('$m = \rho v$','Interpreter','latex');
     set([hXLabel, hYLabel], 'FontSize', size_font);
     set(gca,'FontSize',size_font)
     set(gcf, 'Color', 'w');
