@@ -1,7 +1,7 @@
 Solve Riemann problems for the 1D AR equations
 
    (rho)_t + (rho*v)_x = 0
-   (v)_t + (v - rho * (rho^gamma)) * (v)_x = 0
+   (v)_t + (v - rho * (gamma* rho^(gamma-1))) * (v)_x = 0
 
 using approximate Riemann solver
 
