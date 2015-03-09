@@ -18,13 +18,11 @@ subroutine qinit(meqn,mbc,mx,xlower,dx,q,maux,aux)
       do i=1,mx
          xcell = xlower + (i-0.5d0)*dx
         if (xcell.lt.0.0d0) then
-            q(1,i) = 0.3d0
-            q(2,i) = 0.06d0
-            ! q(1,i) = 0.001d0
-            ! q(2,i) = 0.0d0
+            q(1,i) = 0.00001d0
+            q(2,i) = 0.0d0
         else
             q(1,i) = 0.4d0
-            q(2,i) = 0.12d0
+            q(2,i) = 0.3d0
         endif
       enddo
 

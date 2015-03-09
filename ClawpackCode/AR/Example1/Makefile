@@ -35,7 +35,7 @@ MODULES = \
 
 SOURCES = \
   qinit.f90 \
-  pw.f90 \
+  ../ar.f90 \
   $(CLAW)/classic/src/1d/setprob.f90 \
   $(CLAW)/classic/src/1d/setaux.f90 \
   $(CLAW)/classic/src/1d/bc1.f \

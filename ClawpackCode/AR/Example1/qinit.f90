@@ -20,8 +20,6 @@ subroutine qinit(meqn,mbc,mx,xlower,dx,q,maux,aux)
         if (xcell.lt.0.0d0) then
             q(1,i) = 0.3d0
             q(2,i) = 0.2d0
-            ! q(1,i) = 0.00001d0
-            ! q(2,i) = 0.0d0
         else
             q(1,i) = 0.4d0
             q(2,i) = 0.3d0

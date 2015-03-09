@@ -29,7 +29,6 @@ def setplot(plotdata):
     plotaxes.axescmd = 'subplot(2,1,1)'   # top figure
     plotaxes.xlimits = 'auto'
     plotaxes.ylimits = [0.25,0.45]
-    # plotaxes.ylimits = [-0.1,0.5]
     plotaxes.title = 'Density'
 
     # Set up for item on these axes:
@@ -51,7 +50,6 @@ def setplot(plotdata):
     plotaxes.axescmd = 'subplot(2,1,2)'   # bottom figure
     plotaxes.xlimits = 'auto'
     plotaxes.ylimits = [0.1,0.35]
-    # plotaxes.ylimits = [-9,2]
     plotaxes.title = 'Velocity'
     
     # Set up for item on these axes:
