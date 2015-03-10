@@ -16,7 +16,7 @@ validity = false;
 %% Setting up curves in the U = (rho, v) plane
 
 % Calling function to generate figures
-Ufigs = UPlot(1, validity);
+Ufigs = UPlot(validity);
 
 % Exporting figures
 figure(Ufigs(1))
@@ -82,7 +82,7 @@ cd ..
 %% Setting up curves in the Y = (rho,y) plane
 
 % Calling function to generate figures
-Yfigs = YPlot(1);
+Yfigs = YPlot();
 
 figure(Yfigs(1))
 cd export_fig_code
