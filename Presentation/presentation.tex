@@ -95,7 +95,7 @@
 %	TITLE PAGE
 %----------------------------------------------------------------------------------------
 
-\title[Short title]{Beep Beep!} % The short title appears at the bottom of every slide, the full title is only on the title page
+\title[Short title]{Comparison of Two Second Order Traffic Flow Models} % The short title appears at the bottom of every slide, the full title is only on the title page
 
 \author{Kelsey Maass and Brisa Davis} % Your name
 \institute[UW] % Your institution as it will appear on the bottom of every slide, may be shorthand to save space
@@ -394,7 +394,7 @@ With some manipulation, we can get the system
 &\partial_t\rho + \partial_x(\rho v) = 0, \\
 &\partial_t \left(\rho\left(v + p(\rho )\right)\right) + \partial_x \left( \rho v\left(v + p(\rho )\right)\right) = 0.
 \end{align*}
-This can be rewritten as $q_t + f(q)_x = $ by defining
+This can be rewritten as $q_t + f(q)_x = 0$ by defining
 \begin{align*}
 q = \left[ \begin{matrix}
 \rho \\ y
@@ -497,7 +497,7 @@ To illustrate a couple of examples where the AR model preforms better than the P
 \hline
 & $v_l$ & $\rho_l $ & $v_r$ & $\rho_r $\\
 \hline
-Example 1 & 0.2 & .03 & 0.3 & 0.4 \\
+Example 1 & 0.2 & 0.3 & 0.3 & 0.4 \\
 Example 2 & 0 & 0 & 0.3 & 0.4\\
 \hline
 \end{tabular}
@@ -507,6 +507,19 @@ Example 2 & 0 & 0 & 0.3 & 0.4\\
 
 \begin{frame}
 \frametitle{Example 1}
+Initial Conditions:
+\begin{table}[t]
+\begin{center}
+\begin{tabular}{| c c  c c|}
+\hline
+$v_l$ & $\rho_l $ & $v_r$ & $\rho_r $\\
+\hline
+0.2 & 0.3 & 0.3 & 0.4 \\
+\hline
+\end{tabular}
+\end{center}
+\end{table}
+
 The solution to the Riemann problem is:
 \begin{figure}[h!]
  \centering
@@ -521,6 +534,19 @@ The solution to the Riemann problem is:
 
 \begin{frame}
 \frametitle{Example 1}
+Initial Conditions:
+\begin{table}[t]
+\begin{center}
+\begin{tabular}{| c c  c c|}
+\hline
+$v_l$ & $\rho_l $ & $v_r$ & $\rho_r $\\
+\hline
+0.2 & 0.3 & 0.3 & 0.4 \\
+\hline
+\end{tabular}
+\end{center}
+\end{table}
+
 \begin{center}
 \begin{multicols}{2}%
 AR model:
@@ -547,6 +573,19 @@ PW Model:
 
 \begin{frame}
 \frametitle{Example 2}
+Initial Conditions:
+\begin{table}[t]
+\begin{center}
+\begin{tabular}{| c c  c c|}
+\hline
+$v_l$ & $\rho_l $ & $v_r$ & $\rho_r $\\
+\hline
+0 & 0 & 0.3 & 0.4 \\
+\hline
+\end{tabular}
+\end{center}
+\end{table}
+
 The solution to the Riemann problem is:
 
 \begin{figure}[h!]
@@ -562,6 +601,19 @@ The solution to the Riemann problem is:
 
 \begin{frame}
 \frametitle{Example 2}
+Initial Conditions:
+\begin{table}[t]
+\begin{center}
+\begin{tabular}{| c c  c c|}
+\hline
+$v_l$ & $\rho_l $ & $v_r$ & $\rho_r $\\
+\hline
+0 & 0 & 0.3 & 0.4 \\
+\hline
+\end{tabular}
+\end{center}
+\end{table}
+
 \begin{center}
 \begin{multicols}{2}%
 AR model:
@@ -593,6 +645,10 @@ PW Model:
 \end{frame}
 
 %----------------------------------------------------------------------------------------
+\begin{frame}
+\frametitle{Bibliography}
 \bibliography{presentation}{}
 \bibliographystyle{plain}
+\end{frame}
+
 \end{document} 
