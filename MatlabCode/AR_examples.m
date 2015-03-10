@@ -38,18 +38,18 @@ for example = 1:2
         % Finding index for given point
         switch_index = find(rho==rho_star(state));
         
-        x = rho_star(state) + 0.009;
-        y = rho_star(state)*v_star(state)-0.007;
+        x = rho_star(state) + 0.008;
+        y = rho_star(state)*v_star(state)-0.005;
         if (k == 1)
             plot(rho(1:switch_index),rv1(state,1:switch_index),'g')
             hold on
             plot(rho(switch_index:end),rv1(state,switch_index:end),'r')
-            text(x,y,'$m_l$','Interpreter', 'latex','FontSize',size_font)
+            text(x,y,'$q_l$','Interpreter', 'latex','FontSize',size_font)
         else
             plot(rho(1:switch_index),rv1(state,1:switch_index),'r')
             hold on
             plot(rho(switch_index:end),rv1(state,switch_index:end),'g')
-            text(x,y,'$m_r$','Interpreter', 'latex','FontSize',size_font)
+            text(x,y,'$q_r$','Interpreter', 'latex','FontSize',size_font)
         end
         
         plot(rho,rv2(state,:),'b')
@@ -68,8 +68,8 @@ for example = 1:2
         plot(rho_m, rhov_m,'ro', 'LineWidth', 2)
         
         x = double(rho_m) - 0.02;
-        y = double(rhov_m) + 0.008;
-        str = '$ \widetilde{m} $';
+        y = double(rhov_m) + 0.007;
+        str = '$ q_m $';
         text(x, y, str,'Interpreter', 'latex','FontSize',size_font)
     end
     
@@ -92,7 +92,7 @@ for example = 1:2
     set(gca,'FontSize',size_font)
     set(gcf, 'Color', 'w');
     
-    % Exporting figure
+    % Exporting figures
     if (example == 1)
         cd export_fig_code
         export_fig( gcf, ...      % figure handle
@@ -110,9 +110,4 @@ for example = 1:2
             '-r72' );             % resolution in dpi
         cd ..
     end
-    
-    % Plotting solution
-    
-    % TODO: add plotting solution code. 
-    % I'm not sure how to do this from the above plots.
 end

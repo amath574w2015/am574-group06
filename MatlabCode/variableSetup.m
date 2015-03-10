@@ -1,4 +1,4 @@
-global v_star rho_star p pprime rho
+global v_star rho_star p pprime rho gamma
 
 % Declaring various starting values
 v_star = [0.2 .5 .8];
