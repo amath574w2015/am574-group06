@@ -1,4 +1,4 @@
-# am574-group06
+# Comparison of Two Second Order Traffic Flow Models
 
 Our draft can be found here:
 * [Draft.pdf](FirstDraftMaterials/Draft.pdf)
