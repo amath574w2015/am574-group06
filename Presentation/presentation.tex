@@ -114,6 +114,22 @@ Group 6
 \end{frame}
 
 \begin{frame}
+\frametitle{Introduction}
+\hspace{4.75em} First and second order traffic flow models: \\[3ex]
+
+\[ \begin{matrix*}[l]
+\text{LWR: } & \rho_t + \Big(\rho V(\rho)\Big)_x = 0 \\[4ex]
+
+\text{PW: } & \left\{ \begin{matrix*}[l] \rho_t + (\rho v)_x = 0 \\[1ex] v_t + v v_x + \dfrac{p'(\rho)}{\rho} \rho_x = \dfrac{V(\rho) - v}{\tau} + \mu v_{xx} \end{matrix*} \right. \\[6ex]
+
+\text{AR: } &  \left\{ \begin{matrix*}[l] \rho_t + (\rho v)_x = 0 \\[1ex] v_t + \Big( v - \rho p'(\rho) \Big)_x = 0 \end{matrix*} \right.
+\end{matrix*} \]
+
+
+
+\end{frame}
+
+\begin{frame}
 \frametitle{Introduction} 
 \begin{itemize}
 \item Are second-order models always better than first-order models?
@@ -184,7 +200,7 @@ Rewriting the second equation in terms of velocity and adding relaxation and vis
 
 \hspace{2em} ``A fluid particle responds to stimuli from the front and from \\ 
 \hspace{2em} behind, but a car is an anisotropic particle that mostly \\
-\hspace{2em} responds to frontal stimuli." CITATION
+\hspace{2em} responds to frontal stimuli." \cite{Daganzo1995} 
 
 \end{frame}
 
@@ -335,7 +351,7 @@ This change reflects the fact that the driver's perspective is a moving frame of
 
 Using the convective derivative, the proposed AR model is: \\[1ex]
 
-\[ \left\{ \begin{matrix*}[l] \rho_t + (\rho v)_x = 0 \\[2ex] (v + \rho)_t + v(v + \rho)_x = 0 \end{matrix*} \right. \]
+\[ \left\{ \begin{matrix*}[l] \rho_t + (\rho v)_x = 0 \\[2ex] \Big(v + p(\rho)\Big)_t + v\Big(v + p(\rho)\Big)_x = 0 \end{matrix*} \right. \]
 
 \end{frame}
 
@@ -349,7 +365,7 @@ AR model in conservation form: \\[3ex]
 Conserved quantities:
 \begin{enumerate}
 \item Mass (density): $\rho$
-\item ``Momentum": $y = v + p(\rho)$
+\item ``Momentum": $y = \rho(v + p(\rho))$
 \end{enumerate}
 
 \end{frame}
@@ -371,13 +387,11 @@ Note that neither characteristic speed is greater than the velocity!
 \begin{frame}
 \frametitle{Aw-Rascle (AR) Model}
 
-Aw and Rascle (2000) propose some conditions for traffic models:
+Aw and Rascle propose some conditions for traffic models \cite{AwRascle2000}:
 \begin{enumerate}
-\item The system must be hyperbolic.
-\item When solving the Riemann problem with bounded nonnegative data $(\rho, v)$, the density and velocity must remain nonnegative and bounded from above.
-\item When solving the Riemann problem with data $Q_{\pm} = (\rho_{\pm}, v_{\pm})$, all waves connecting any state $Q = (\rho, v)$ to its left (behind it) must have a propagation speed (eigenvalue or shock speed) at most equal to the velocity $v$.  
+\item When solving the Riemann problem, the density and velocity must remain nonnegative and bounded from above.
+\item When solving the Riemann problem, all waves connecting any state $Q = (\rho, v)$ to its left (behind it) must have a propagation speed (eigenvalue or shock speed) at most equal to the velocity $v$.  
 \item The solution to the Riemann problem must agree with the qualitative properties that each driver practically observes every day.
-\item Near the vacuum, the solution to the Riemann problem must be very sensitive to the data (no continuous dependence with respect to initial data at $\rho = 0$). 
 \end{enumerate}
 
 \end{frame}
