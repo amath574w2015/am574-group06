@@ -6,8 +6,8 @@ Abstract:
 While the Lighthill-Whitham-Richards traffic flow model behaves well macroscopically, it does not accurately describe how vehicles travel through shocks.  We compare two second order models, the Payne-Whitman model and the Aw-Rascle model, that attempt to improve the first order LWR model.  Specifically, we demonstrate that the PW model's representation of traffic as a fluid ignores the anisotropic nature of cars, which leads to unrealistic results.  Next we consider the AR model, which utilizes a convective derivative to resolve the problem of negative velocities present in the PW model.
  Through this talk we hope to highlight the fact that introducing higher order relations does not automatically improve the accuracy of modeling a given physical system, illustrating the importance of validation in modeling. 
 
-Our draft can be found here:
-* [Presentation.pdf](Presentation/Presentation.pdf)
+Our presentation can be found here:
+* [presentation.pdf](Presentation/presentation.pdf)
 * To find it in the repository, go to the Presentation folder and open the Presentation.pdf file.
 
 Our final paper can be found here: 
