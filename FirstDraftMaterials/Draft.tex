@@ -57,9 +57,9 @@ Here the flux function contains a contribution from the momentum, $(\rho v)v = \
 
 The first term on the right hand side is a relaxation term meant to mimic the driver's tendency to drive at the preferred velocity, where $\tau$ represents the driver's reaction time.  The second term, like the diffusion term above, represents the driver's awareness of nearby conditions.  Both $\tau$ and $\mu$ are nonnegative constants.  
 
-At first glance, this seems like a reasonable model.  One fundamental difference between cars and fluids causes this model to predict nonphysical situations.  As pointed out by Daganzo, 	``a fluid particle responds to stimuli from the front and from behind, but a car is an anisotropic particle that mostly responds to frontal stimuli" \cite{Daganzo1995}.  If we consider the eigenvalues of the linearized system,
+At first glance, this seems like a reasonable model.  However, one fundamental difference between cars and fluids causes this model to predict nonphysical situations.  As pointed out by Daganzo, 	``a fluid particle responds to stimuli from the front and from behind, but a car is an anisotropic particle that mostly responds to frontal stimuli" \cite{Daganzo1995}.  If we consider the eigenvalues of the linearized system,
 
-\[ \begin{pmatrix} \rho \\[1ex] v \end{pmatrix}_t + \begin{pmatrix} v & \rho \\[1ex] \dfrac{p'(\rho)}{\rho} & v \end{pmatrix} \begin{pmatrix} \rho \\[1ex] v \end{pmatrix}_x = \begin{pmatrix} 0 \\[1ex] 0 \end{pmatrix}, \]
+\[ \begin{pmatrix} \rho \\[1ex] v \end{pmatrix}_t + \begin{pmatrix} v & \rho \\[1ex] \dfrac{p'(\rho)}{\rho} & v \end{pmatrix} \begin{pmatrix} \rho \\[1ex] v \end{pmatrix}_x = \begin{pmatrix} 0 \\[1ex] \dfrac{V(\rho) - v}{\tau} + \mu v_{xx} \end{pmatrix}, \]
 
 we see that the largest eigenvalue, $\lambda_2 = v + \sqrt{p'(\rho})$, represents information traveling faster than the velocity of cars in the system.  This implies that traffic conditions are partially determined by what is going on behind the drivers.  This contradicts the anisotropic nature of cars. 
 
@@ -121,7 +121,7 @@ Here, shocks are shown in red or magenta and rarefaction waves are shown in eith
 
 % AR Model: Theory
 \subsection{Theory}
-To illustrate the PW model's problematic representation of cars as a fluid, Aw and Rascle \cite{AwRascle2000} consider the following situation.  Assume you are in your car, traveling with velocity $v$.  If the density ahead of you is increasing with respect to $x$ but decreasing with respect to $x - vt$, would you speed up or slow down?  Although the cars ahead are more densely spaced, they are traveling faster than you, so you would most likely accelerate.  However, since the density ahead is increasing with respect to $x$, the PW model predicts that you would slow down.  
+To illustrate the PW model's problematic representation of cars as a fluid, Aw and Rascle \cite{AwRascle2000} consider the following situation.  Assume you are in your car, traveling with velocity $v$.  If the density ahead of you is increasing with respect to $x$ but decreasing with respect to $x - vt$, would you speed up or slow down?  Although the cars ahead are more densely packed, they are traveling faster than you, so you would most likely accelerate.  However, since the density ahead is increasing with respect to $x$, the PW model predicts that you would slow down.  
 
 According to Aw and Rascle, the model should be more concerned with the perspective of the driver, which is relative to a moving frame of reference.  In this case, we should involve the convective derivative of the anticipation factor, $\partial_t + v \partial_x$, instead of the space derivative.  They propose the model:
 
@@ -131,7 +131,7 @@ In conservative form, the second equation becomes $\Big( \rho (v + p(\rho)) \Big
 
 \[ \begin{pmatrix} \rho \\[1ex] v \end{pmatrix}_t + \begin{pmatrix} v & \rho \\[1ex] 0 & v - \rho p'(\rho) \end{pmatrix} \begin{pmatrix} \rho \\[1ex] v \end{pmatrix}_x = \begin{pmatrix} 0 \\[1ex] 0 \end{pmatrix}, \]
 
-we see that one issues is resolved.  In this model, the largest eigenvalue $\lambda_2 = v$.  Therefore no characteristic speed is greater than the velocity, so that drivers are no longer influenced by conditions behind them. To validate their model, Aw and Rascle claim that their improved model satisfies the following important conditions:
+we see that one issues is resolved.  In this model, the largest eigenvalue is $\lambda_2 = v$.  Therefore no characteristic speed is greater than the velocity, so that drivers are no longer influenced by conditions behind them. To validate their model, Aw and Rascle claim that their improved model satisfies the following important conditions:
 \begin{enumerate}
 \item The system is hyperbolic.
 \item When solving the Riemann problem with bounded nonnegative data $(\rho, v)$, the density and velocity remain nonnegative and bounded from above.
@@ -428,7 +428,7 @@ In the second example, we consider the case where there are no cars on the left.
 \end{figure}
 
 \section{Conclusion}
-By studying the examples of the LWR, PW and AR models for traffic flow, we see that higher order models are not always more accurate than first order models.  Additionally, the assumptions made in developing higher order relations must conform to the phenomena they are designed to model.  For example, using equations for isotropic fluids to model anisotropic cars in the PW model produces nonphysical results.  The AR model corrects this problem by using a convective derivative rather than a space derivative for the anticipation factor.  Therefore, whenever we introduce higher order models, we should follow the example of Aw and Rascle by validating the model's results in a systematic way.  
+By studying the examples of the LWR, PW and AR models for traffic flow, we see that higher order models are not always more accurate than first order models.  Additionally, the assumptions made in developing higher order relations must conform to the phenomena they are designed to model.  For example, using equations for isotropic fluids to model anisotropic cars in the PW model produces nonphysical results.  The AR model corrects this problem by using a convective derivative rather than a space derivative for the anticipation factor.  Furthermore, the authors verified that their model behaved reasonably by checking it against a list of important conditions.  Therefore, whenever we introduce higher order models, we should follow the example of Aw and Rascle by validating the model's results in a systematic way.  
 
 \bibliography{Draft}{}
 \bibliographystyle{plain}
