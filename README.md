@@ -7,8 +7,8 @@ While the Lighthill-Whitham-Richards traffic flow model behaves well macroscopic
  Through this talk we hope to highlight the fact that introducing higher order relations does not automatically improve the accuracy of modeling a given physical system, illustrating the importance of validation in modeling. 
 
 Our draft can be found here:
-* [Draft.pdf](FirstDraftMaterials/Draft.pdf)
-* To find it in the repository, go to the FirstDraftMaterials folder and open the Draft.pdf file.
+* [Presentation.pdf](Presentation/Presentation.pdf)
+* To find it in the repository, go to the Presentation folder and open the Presentation.pdf file.
 
 Our final paper can be found here: 
 * [FinalPaper.pdf](FinalPaper/FinalPaper.pdf)
