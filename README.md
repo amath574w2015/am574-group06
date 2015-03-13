@@ -1,4 +1,6 @@
-# Comparison of Two Second Order Traffic Flow Models
+# am574-group06
+
+Title: A Comparison of Two Second Order Traffic Flow Models
 
 Abstract:
 While the Lighthill-Whitham-Richards traffic flow model behaves well macroscopically, it does not accurately describe how vehicles travel through shocks.  We compare two second order models, the Payne-Whitman model and the Aw-Rascle model, that attempt to improve the first order LWR model.  Specifically, we demonstrate that the PW model's representation of traffic as a fluid ignores the anisotropic nature of cars, which leads to unrealistic results.  Next we consider the AR model, which utilizes a convective derivative to resolve the problem of negative velocities present in the PW model.
