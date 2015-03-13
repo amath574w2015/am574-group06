@@ -22,9 +22,9 @@
 
 % Introduction
 \section{Introduction}
-When a model is called ``higher order", we usually associate it with being more accurate than a first order model.  However, this is not always the case.  Adding complexity to a model does not necessarily improve it, as is demonstrated in the class of higher order traffic flow models developed with the intention of improving the first order traffic flow model proposed by Lighthill and Whitham \cite{Lighthill1955}, and Richards \cite{Richards1956}.  As Carlos F. Daganzo observes in his paper \cite{Daganzo1995}, ``A new theory ... is deemed successful if it explains previously unexplained phenomena, plus everything else that was correctly explained with the theory it intends to replace."  Unfortunately, some of these higher order models are not successful because they actually behave worse than the original.  \\
+When a model is called ``higher order", we usually associate it with being more accurate than a first order model.  However, this is not always the case.  Adding complexity to a model does not necessarily improve it, as is demonstrated in the class of higher order traffic flow models developed with the intention of improving the first order traffic flow model proposed by Lighthill and Whitham \cite{Lighthill1955}, and Richards \cite{Richards1956}.  As Carlos F. Daganzo observes in his paper \cite{Daganzo1995}, ``A new theory ... is deemed successful if it explains previously unexplained phenomena, plus everything else that was correctly explained with the theory it intends to replace."  Unfortunately, some of these higher order models are not successful because they actually behave worse than the original.  
 
-In this paper we first examine the second order traffic model developed by Payne \cite{Payne1971} and Whitham \cite{Whitham1974} which was meant to improve how the LWR model explains traffic behavior near shocks.  Viewing traffic as a compressible fluid, the model borrows equations used to describe compressible fluid dynamics.  Unfortunately, due to the anisotropic nature of cars, the model actually performs worse than the LWR model in certain cases.  For example, by smoothing out discontinuities, the PW model sometimes predicts negative velocities.  \\
+In this paper we first examine the second order traffic model developed by Payne \cite{Payne1971} and Whitham \cite{Whitham1974} which was meant to improve how the LWR model explains traffic behavior near shocks.  Viewing traffic as a compressible fluid, the model borrows equations used to describe compressible fluid dynamics.  Unfortunately, due to the anisotropic nature of cars, the model actually performs worse than the LWR model in certain cases.  For example, by smoothing out discontinuities, the PW model sometimes predicts negative velocities.  
 
 In addition to considering the PW model, we also take at a look a more successful model proposed by Aw and Rascle \cite{AwRascle2000}.  These authors challenge some of the assumptions of the PW model and suggest the use of a convective derivative to fix the problem of negative velocities.  In order to verify that their model is valid, they test their new model against criteria they claim any reasonable model will satisfy.  
 
@@ -396,6 +396,10 @@ Example 2 & 0 & 0 & 0.3 & 0.4\\
 
 Reproducing the Riemann problems found in \cite{AwRascle2000}, we consider two different examples. The variables used in these two examples are shown in Table \ref{table:1}. Note that in the solution from the AR model for example 1, shown in Figure \ref{fig:example1} (a), the transition from $q_l = (\rho_l, v_l\rho_l)$ to $q_r = (\rho_r, v_r\rho_r)$ is first a shock and then a contact discontinuity. The middle state is denoted by $q_m$ in the figure. In the solution given by the AR model for example 2, show in Figure \ref{fig:example2} (a), the transition from $q_l = (\rho_l, v_l\rho_l)$ to $q_r = (\rho_r, v_r\rho_r)$ is a shock wave, and there is no middle state.
 
+In both examples the density and velocity are greater in the right state than in the left state.  This corresponds to the situation considered by Aw and Rascle that motivated the use of the convective derivative.  In the first example, we see that the AR model predicts that the density of the middle state is less than both left or right states, but that the velocity increases steadily from left state to right.  This is what we would expect, as drivers spread out as the accelerate to catch up with the cars ahead.  On the other hand, the PW model predicts that the middle state will have a greater density than the left state but a smaller velocity.  This is opposite of what we would expect.
+
+In the second example, we consider the case where there are no cars on the left.  Once again the AR model predicts what we would expect.  Here the cars continue to move to the right at a constant velocity, while the state on the left remains zero.  Note that in Clawpack solutions the density and velocity are undefined in the middle, but that this is a result of numerical issues.  In reality they should both be zero.  The PW method again fails to produce reasonable results.  Not only does it predict negative velocities, but we can see from the density plot that some cars have in fact moved backwards into the left region.  While it would make sense for fluids to act this way, we do not expect drivers to start moving in reverse when they see that nobody is behind them!
+
 \begin{figure}[H]
  \centering
  \subfigure[Solution from the AR model.]{
@@ -421,6 +425,9 @@ Reproducing the Riemann problems found in \cite{AwRascle2000}, we consider two d
  {Solutions to the Riemann problem for example 2 computed in Clawpack.}
   \label{fig:example2}
 \end{figure}
+
+\section{Conclusion}
+By studying the examples of the LWR, PW and AR models for traffic flow, we see that higher order models are not always more accurate than first order models.  Additionally, the assumptions made in developing higher order relations must conform to the phenomena they are designed to model.  For example, using equations for isotropic fluids to model anisotropic cars in the PW model produces nonphysical results.  The AR model corrects this problem by using a convective derivative rather than a space derivative for the anticipation factor.  Therefore, whenever we introduce higher order models, we should follow the example of Aw and Rascle by validating the model's results in a systematic way.  
 
 \bibliography{Draft}{}
 \bibliographystyle{plain}
