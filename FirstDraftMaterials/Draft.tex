@@ -21,9 +21,9 @@
 
 % Introduction
 \section{Introduction}
-When a model is called ``higher order", we usually associate it with being more accurate than a first order model.  However, this is not always the case.  Adding complexity to a model does not necessarily improve it, as is demonstrated in the class of higher order traffic flow models developed with the intention of improving the first order traffic flow model proposed by Lighthill, Whitham and Richards.  As Carlos F. Daganzo observes in his paper \cite{Daganzo1995}, ``A new theory ... is deemed successful if it explains previously unexplained phenomena, plus everything else that was correctly explained with the theory it intends to replace."  Unfortunately, some of these higher order models are not successful because they actually behave worse than the original.  \\
+When a model is called ``higher order", we usually associate it with being more accurate than a first order model.  However, this is not always the case.  Adding complexity to a model does not necessarily improve it, as is demonstrated in the class of higher order traffic flow models developed with the intention of improving the first order traffic flow model proposed by Lighthill and Whitham \cite{Lighthill1955}, and Richards \cite{Richards1956}.  As Carlos F. Daganzo observes in his paper \cite{Daganzo1995}, ``A new theory ... is deemed successful if it explains previously unexplained phenomena, plus everything else that was correctly explained with the theory it intends to replace."  Unfortunately, some of these higher order models are not successful because they actually behave worse than the original.  \\
 
-In this paper we first examine the second order traffic model developed by Payne and Whitham which was meant to improve how the LWR model explains traffic behavior near shocks.  Viewing traffic as a compressible fluid, the model borrows equations used to describe compressible fluid dynamics.  Unfortunately, due to the anisotropic nature of cars, the model actually performs worse than the LWR model in certain cases.  For example, by smoothing out discontinuities, the PW model sometimes predicts negative velocities.  \\
+In this paper we first examine the second order traffic model developed by Payne \cite{Payne1971} and Whitham \cite{Whitham1974} which was meant to improve how the LWR model explains traffic behavior near shocks.  Viewing traffic as a compressible fluid, the model borrows equations used to describe compressible fluid dynamics.  Unfortunately, due to the anisotropic nature of cars, the model actually performs worse than the LWR model in certain cases.  For example, by smoothing out discontinuities, the PW model sometimes predicts negative velocities.  \\
 
 In addition to considering the PW model, we also take at a look a more successful model proposed by Aw and Rascle \cite{AwRascle2000}.  These authors challenge some of the assumptions of the PW model and suggest the use of a convective derivative to fix the problem of negative velocities.  In order to verify that their model is valid, they test their new model against criteria they claim any reasonable model will satisfy.  
 
@@ -118,21 +118,22 @@ Restrictions on the way that $\lambda$ must vary across a wave allow us to ident
 
 % AR Model: Theory
 \subsection{Theory}
-Another issues with the PW model, as Aw and Rascle point out in their paper, is that there is no conservation of momentum in car traffic.  Instead, the term involving pressure is mean to represent an anticipation factor, or how a driver would react to a variation in the concentration of cars with respect to space.   However, what we should really be concerned with is the perspective of the driver, which is relative to a moving timeframe.  In this case, we should be using a convective derivative, $\partial_t + v \partial_x$, of the pressure.  The new model becomes:
+To illustrate the PW model's problematic representation of cars as a fluid, Aw and Rascle \cite{AwRascle2000} consider the following situation.  Assume you are in your car, traveling with velocity $v$.  If the density ahead of you is increasing with respect to $x$ but decreasing with respect to $x - vt$, would you speed up or slow down?  Although the cars ahead are more densely spaced, they are traveling faster than you, so you would most likely accelerate.  However, since the density ahead is increasing with respect to $x$, the PW model predicts that you would slow down.  
 
-\[ \left\{ \begin{matrix*}[l] & \rho_t + (\rho v)_x = 0 \\[1ex] & (v + p)_t + v (v + p)_x = 0 \end{matrix*} \right. \]
+According to Aw and Rascle, the model should be more concerned with the perspective of the driver, which is relative to a moving frame of reference.  In this case, we should involve the convective derivative of the anticipation factor, $\partial_t + v \partial_x$, instead of the space derivative.  They propose the model:
 
-The second equation can also be rewritten as an equation for velocity: $v_t + \Big(v - \rho p'(\rho)\Big)v_x = 0$. \\
+\[ \left\{ \begin{matrix*}[l] & \rho_t + (\rho v)_x = 0 \\[1ex] & \Big(v + p(\rho)\Big)_t + v \Big(v + p(\rho)\Big)_x = 0 \end{matrix*} \right. \]
 
-This updated model no longer conserves momentum.  Instead, it conserves the quantity $y = v + p(\rho)$, which we can see if we rearrange the second equation to a conservation form: $(\rho (v + p(\rho)))_t + (\rho v(v + p(\rho)))_x = 0$. While the authors admit that there is no obvious physical interpretation of this quantity, they claim that it is the most natural pair of conservative variables. \\
+In conservative form, the second equation becomes $\Big( \rho (v + p(\rho)) \Big)_t + \Big( \rho v (v + p(\rho)) \Big)_x = 0$.  Aw and Rascle call this conserved quantity, $y = \rho v + \rho p(\rho)$, "momentum", although they admit that $y$ has no obvious physical interpretation. Furthermore, the second equation can also be rewritten as an equation for velocity: $v_t + \Big(v - \rho p'(\rho)\Big)v_x = 0$. If we consider the linearized system,
 
-The authors also claim that their improved model satisfies the following important conditions:
+\[ \begin{pmatrix} \rho \\[1ex] v \end{pmatrix}_t + \begin{pmatrix} v & \rho \\[1ex] 0 & v - \rho p'(\rho) \end{pmatrix} \begin{pmatrix} \rho \\[1ex] v \end{pmatrix}_x = \begin{pmatrix} 0 \\[1ex] 0 \end{pmatrix}, \]
+
+we see that one issues is resolved.  In this model, the largest eigenvalue $\lambda_2 = v$.  Therefore no characteristic speed is greater than the velocity, so that drivers are no longer influenced by conditions behind them. To validate their model, Aw and Rascle claim that their improved model satisfies the following important conditions:
 \begin{enumerate}
 \item The system is hyperbolic.
-\item When solving the Riemann problem with bounded nonnegative data $(\rho, v)$, the density and velocity must remain nonnegative and bounded from above.
-\item When solving the Riemann problem, no waves connecting any state to its left (behind it) can have a propagation speed greater than the velocity $v$.
-\item The solution to the Riemann problem must agree with qualitative properties that drivers actually experience: braking produces shock waves and acceleration produces rarefaction waves.
-\item Near a vacuum, the solution to the Riemann problem must be sensitive to the data.
+\item When solving the Riemann problem with bounded nonnegative data $(\rho, v)$, the density and velocity remain nonnegative and bounded from above.
+\item When solving the Riemann problem, no waves connecting any state to its left (behind it) have a propagation speed greater than the velocity $v$.
+\item The solution to the Riemann problem agrees with qualitative properties that drivers actually experience: braking produces shock waves and acceleration produces rarefaction waves.
 \end{enumerate}
 
 % AR Model: Hugoniot Loci and Integral Curves
