@@ -37,7 +37,7 @@ We start by considering a first order (one equation) model of traffic flow on a 
 \item Differential form of equation: $\rho_t + f( \rho )_x = \rho_t + \Big( \rho V(\rho) \Big)_x = 0$
 \end{enumerate}
 
-The LWR model uses the flux function $f(\rho) = \rho V(\rho)$, where $V(\rho)$ represents the preferred, or equilibrium, velocity, a given nonincreasing function of $\rho$, nonnegative for $\rho$ between 0 and $\rho_m$, the ``jam" density.  The LWR model behaves well macroscopically, predicting piece-wise smooth density with transitions between regions approximated by shocks.  However, it assumes that cars change their velocities instantaneously as they travel through shocks.  One way to eliminate shocks would be to add a diffusion term: $\rho_t + \Big(\rho V(\rho))_x = \mu \rho_{xx}$.  This additional term is meant to account for the driver's awareness of the road ahead and behind.  However, this model can be shown to predict negative velocities in some instances.  
+The LWR model uses the flux function $f(\rho) = \rho V(\rho)$, where $V(\rho)$ represents the preferred, or equilibrium, velocity, a given nonincreasing function of $\rho$, nonnegative for $\rho$ between 0 and $\rho_m$, the ``jam" density.  The LWR model behaves well macroscopically, predicting piece-wise smooth density with transitions between regions approximated by shocks.  However, it assumes that cars change their velocities instantaneously as they travel through shocks.  One way to eliminate shocks would be to add a diffusion term: $\rho_t + \Big(\rho V(\rho)\Big)_x = \mu \rho_{xx}$.  This additional term is meant to account for the driver's awareness of the road ahead and behind.  However, this model can be shown to predict negative velocities in some instances.  
 
 % PW Model
 \section{PW Model}
@@ -112,7 +112,9 @@ for $\lambda_2$.
   \label{fig:PW_curves}
 \end{figure}
 
-Restrictions on the way that $\lambda$ must vary across a wave allow us to identify the regions of the Hugoniot loci and integral curves that are valid for any given point. When traveling across a shock from a left state, $q_l$, to a right state $q_r$, $\lambda$ must decrease. When traveling across a rarefaction wave from a left state, $q_l$, to a right state $q_r$, $\lambda$ must increase. In Figure \ref{fig:PW_curves} (c) and (d) we see the Hugoniot loci and integral curves for this system with the contour lines for $\lambda_1$ and $\lambda_2$. Using these plots, we can determine which areas of the curves are valid shocks and which are valid rarefaction waves. Figure \ref{fig:PW_curves} (e) and (d) shows the points $q_l$ and $q_r$, respectively, with only the valid waves displayed. Here, shocks are shown in red or magenta and rarefaction waves are shown in either light or dark green.
+Restrictions on the way that $\lambda$ must vary across a wave allow us to identify the regions of the Hugoniot loci and integral curves that are valid for any given point. When traveling across a shock from a left state, $q_l$, to a right state $q_r$, $\lambda$ must decrease. When traveling across a rarefaction wave from a left state, $q_l$, to a right state $q_r$, $\lambda$ must increase. In Figure \ref{fig:PW_curves} (c) and (d) we see the Hugoniot loci and integral curves for this system with the contour lines for $\lambda_1$ and $\lambda_2$. Using these plots, we can determine which areas of the curves are valid shocks and which are valid rarefaction waves. Figure \ref{fig:PW_curves} (e) and (d) shows the points $q_l$ and $q_r$, respectively, with only the valid waves displayed. For these plots,
+$q_* = (\rho_*,\rho_*v_*) = (0.2, 0.04)$ and $\gamma = 0.2$. 
+Here, shocks are shown in red or magenta and rarefaction waves are shown in either light or dark green.
 
 % AR Model
 \section{AR Model}
@@ -125,7 +127,7 @@ According to Aw and Rascle, the model should be more concerned with the perspect
 
 \[ \left\{ \begin{matrix*}[l] & \rho_t + (\rho v)_x = 0 \\[1ex] & \Big(v + p(\rho)\Big)_t + v \Big(v + p(\rho)\Big)_x = 0 \end{matrix*} \right. \]
 
-In conservative form, the second equation becomes $\Big( \rho (v + p(\rho)) \Big)_t + \Big( \rho v (v + p(\rho)) \Big)_x = 0$.  Aw and Rascle call this conserved quantity, $y = \rho v + \rho p(\rho)$, "momentum", although they admit that $y$ has no obvious physical interpretation. Furthermore, the second equation can also be rewritten as an equation for velocity: $v_t + \Big(v - \rho p'(\rho)\Big)v_x = 0$. If we consider the linearized system,
+In conservative form, the second equation becomes $\Big( \rho (v + p(\rho)) \Big)_t + \Big( \rho v (v + p(\rho)) \Big)_x = 0$.  Aw and Rascle call this conserved quantity, $y = \rho v + \rho p(\rho)$,``momentum", although they admit that $y$ has no obvious physical interpretation. Furthermore, the second equation can also be rewritten as an equation for velocity: $v_t + \Big(v - \rho p'(\rho)\Big)v_x = 0$. If we consider the linearized system,
 
 \[ \begin{pmatrix} \rho \\[1ex] v \end{pmatrix}_t + \begin{pmatrix} v & \rho \\[1ex] 0 & v - \rho p'(\rho) \end{pmatrix} \begin{pmatrix} \rho \\[1ex] v \end{pmatrix}_x = \begin{pmatrix} 0 \\[1ex] 0 \end{pmatrix}, \]
 
@@ -167,7 +169,7 @@ Then from (\ref{AR:eq1}) and (\ref{AR:eq2}) we have the system
 &\partial_t\rho + \partial_x(\rho v) = 0, \\
 &\partial_t \left(\rho\left(v + p(\rho )\right)\right) + \partial_x \left( \rho v\left(v + p(\rho )\right)\right) = 0.
 \end{align*}
-This can be rewritten as $q_t + f(q)_x = $ by defining
+This can be rewritten as $q_t + f(q)_x = 0$ by defining
 \begin{align*}
 q = \left[ \begin{matrix}
 \rho \\ y
@@ -192,7 +194,7 @@ With a little rearranging and by plugging in for $y$, these two equations can be
 &\rho_*(s - v_*) = \rho (s - v), \label{AR:eq5}\\
 &\rho_*(s - v_*)\left(v_* + p(\rho_* )\right) = \rho(s - v)\left(v + p(\rho )\right).\label{AR:eq6}
 \end{align}
-From (\ref{AR:eq5}), we know that there are two cases: 
+From equation (\ref{AR:eq5}), we know that there are two cases: 
 
 (a) $\rho_*(s - v_*) = \rho (s - v) = 0$. In this case we have that
 \begin{align*}
@@ -208,7 +210,7 @@ y_*(s - v) = y(s - v).
 \end{align*}
 So, either $y = y_*$ or $s = v$. If $y = y_*$ we have a stationary point in the $Y = (\rho, y)$ plane, which does not 
 describe a wave. Therefore, $s = v$. Note that we have no restrictions on $y$ other than its definition. 
-Therefore this loci in the $Y$ plane is given by 
+Therefore this loci in the $Y = (\rho, y)$ plane is given by 
 \begin{align*}
 y = \rho ( v_* + p(\rho )).
 \end{align*}
@@ -233,17 +235,17 @@ y = \rho ( v_* + p(\rho )).
   \label{fig:AR_curves}
 \end{figure}
 
-(b) $\rho_*(s - v_*) = \rho (s - v) \neq 0$. In this case, plugging this into (\ref{AR:eq6}) gives
+(b) $\rho_*(s - v_*) = \rho (s - v) \neq 0$. In this case, plugging this into equation (\ref{AR:eq6}) gives
 \begin{align*}
 \rho_*(s - v_*)\left(v_* + p(\rho_* )\right) &= \rho(s - v)\left(v + p(\rho )\right)\\
 \rho(s - v)\left(v_* + p(\rho_* )\right) &= \rho(s - v)\left(v + p(\rho )\right)\\
 v_* + p(\rho_* )&= v + p(\rho ).
 \end{align*}
-Therefore, the Hugoniot loci for this case in the Y plane are given by
+Therefore, the Hugoniot loci for this case in the $Y = (\rho, y)$ plane are given by
 \begin{align*}
 y = v_* + p(\rho_* ),
 \end{align*}
-since $y = v + p(\rho )$ by definition. Note that solving (\ref{AR:eq3}) for $s$ gives
+since $y = v + p(\rho )$ by definition. Note that solving equation (\ref{AR:eq3}) for $s$ gives
 \begin{align*}
 s = \frac{\rho_*v_* - \rho v}{\rho_* - \rho}.
 \end{align*}
@@ -258,8 +260,7 @@ for $\rho_* \approx \rho$.
 In the $U = (\rho, v)$ plane these loci become (a) $v = v_*$, $\rho$ free, and (b) $v = v_* + p(\rho_* ) - p(\rho )$.
  In the $M = (\rho, \rho v)$ plane these loci become (a) $\rho v = \rho_* v_*$, $\rho$ free, 
  and (b) $\rho v = \rho \left( v_* + p(\rho_*)\right) - \rho p(\rho))$. Figure \ref{fig:AR_curves} shows the Hugoniot loci 
- in the different planes. TODO: ADD PARAMETERS USED FOR FIGURES? OR, WILL INCLUDING THE CODE MAKE THAT REDUNDANT? 
- IF WE ADD PARAMETERS, MAYBE THE BEST PRESENTATION WOULD BE IN A TABLE?
+ in the M plane. Note that for these figures we used $\gamma = 0.2$, and in Figure \ref{fig:AR_curves} (c) we used $\rho_* = 0.2$ and $m_* = 0.04$.
 
 \subsubsection{Integral Curves}
 In order to consider the integral curves for this system \cite{AwRascle2000} 
@@ -268,8 +269,8 @@ works from the system
 &\partial_t \rho + \partial_x (\rho v) = 0 \\ 
 &\partial_t v + \left(v - p'(\rho)\rho\right)\partial_x v = 0,
 \end{align*}
-where the second equation is found by multiplying (\ref{AR:eq1}) 
-by $p'(\rho)$ and subtracting it from (\ref{AR:eq1.5}). 
+where the second equation is found by multiplying equation (\ref{AR:eq1}) 
+by $p'(\rho)$ and subtracting it from equation (\ref{AR:eq1.5}). 
 This can be rewritten as $q_t + Aq_t = 0$ by defining
 \begin{align*}
 q = \left[ \begin{matrix}
@@ -330,8 +331,8 @@ This coincides with the Hugoniot loci from case (a).
   \includegraphics[width=45mm]{../MatlabCode/Images/Validity_M_qr.jpg}
    }
  \caption[Optional caption for list of figures]
- {Figures showing the calculation of the valid waves for a given point. Figures (a)
-  and (d) show the $\lambda_1$ curves in black with the $\lambda_1$ contours 
+ {Figures showing the calculation of the valid waves for a given point. Figure (a)
+  shows the $\lambda_1$ curves in black with the $\lambda_1$ contours 
   in cyan. The other figures show valid shocks in red and valid rarefaction 
   waves in green. The contact discontinuity is shown in blue.}
    \label{fig:AR_validity}
@@ -341,43 +342,17 @@ This coincides with the Hugoniot loci from case (a).
 Restrictions on the way that $\lambda$ must vary across a wave allow us to identify the regions of the Hugoniot loci and integral curves that are valid for any given point. When traveling across a shock from a left state, $q_l$, to a right state $q_r$, $\lambda$ must decrease. When traveling across a rarefaction wave from a left state, $q_l$, to a right state $q_r$, $\lambda$ must increase. 
 
 Therefore, it is important to take into account the contour lines of $\lambda$ when 
-looking at the loci and integral curves. Figures \ref{fig:AR_validity}(a) and 
-\ref{fig:AR_validity}(d) show the $\lambda_1$-curves in the $U$ and $M$ planes,
+looking at the loci and integral curves. Figure \ref{fig:AR_validity}(a) 
+shows the $\lambda_1$-curves in the $M$ plane,
 with the contour lines of $\lambda_1$ shown in magenta. This information is used
 to determine which areas of the $\lambda_1$ curves are valid shock waves and which
 are valid rarefaction waves. The rest of the subfigures show the regions of validity for 
 specific points $q_*$, depending on whether $q_* = q_l$ or $q_* = q_r$. For these plots,
-$q_* = (\rho_*,v_*) = (0.2, 0.2)$. Note that the contact discontinuity is valid
-anywhere in the plane. 
+$q_* = (\rho_*,\rho_*v_*) = (0.2, 0.04)$ and $\gamma = 0.2$. Note that the contact discontinuity is valid
+anywhere in the plane since $\lambda_2$ is linearly degenerate.
 
 % Examples
 \section{Examples}
-
-\begin{figure}[H]
- \centering
- \subfigure[Solution from the AR model.]{
-  \includegraphics[width=70mm]{../MatlabCode/Images/AR_example1.jpg}
-   }
-    \subfigure[Solution from the PW model.]{
-  \includegraphics[width=70mm]{../MatlabCode/Images/PW_example1.jpg}
-   }
- \caption[Optional caption for list of figures]
- {Solutions to the Riemann problem for example 1 from the AR and PW models.}
-  \label{fig:example1}
-\end{figure}
-
-\begin{figure}[H]
- \centering
- \subfigure[Solution from the AR model.]{
-  \includegraphics[width=70mm]{../MatlabCode/Images/AR_example2.jpg}
-   }
- \subfigure[Solution from the PW model.]{
-  \includegraphics[width=70mm]{../MatlabCode/Images/PW_example2.jpg}
-   }
- \caption[Optional caption for list of figures]
- {Solutions to the Riemann problem for example 2 from the AR and PW models.}
-  \label{fig:example2}
-\end{figure}
 
 \begin{table}[t]
 \caption{Initial values used in examples 1 and 2.}
@@ -394,11 +369,37 @@ Example 2 & 0 & 0 & 0.3 & 0.4\\
  \label{table:1}
 \end{table}
 
-Reproducing the Riemann problems found in \cite{AwRascle2000}, we consider two different examples. The variables used in these two examples are shown in Table \ref{table:1}. Note that in the solution from the AR model for example 1, shown in Figure \ref{fig:example1} (a), the transition from $q_l = (\rho_l, v_l\rho_l)$ to $q_r = (\rho_r, v_r\rho_r)$ is first a shock and then a contact discontinuity. The middle state is denoted by $q_m$ in the figure. In the solution given by the AR model for example 2, show in Figure \ref{fig:example2} (a), the transition from $q_l = (\rho_l, v_l\rho_l)$ to $q_r = (\rho_r, v_r\rho_r)$ is a shock wave, and there is no middle state.
+Reproducing the Riemann problems found in \cite{AwRascle2000}, we consider two different examples. The variables used in these two examples are shown in Table \ref{table:1}.
 
-In both examples the density and velocity are greater in the right state than in the left state.  This corresponds to the situation considered by Aw and Rascle that motivated the use of the convective derivative.  In the first example, we see that the AR model predicts that the density of the middle state is less than both left or right states, but that the velocity increases steadily from left state to right.  This is what we would expect, as drivers spread out as the accelerate to catch up with the cars ahead.  On the other hand, the PW model predicts that the middle state will have a greater density than the left state but a smaller velocity.  This is opposite of what we would expect.
+In both examples the density and velocity are greater in the right state than in the left state.  This corresponds to the situation considered by Aw and Rascle that motivated the use of the convective derivative.  In the first example, we see that the AR model predicts that the density of the middle state is less than both left or right states, but that the velocity increases steadily from left state to the middle state and then remains constant while the density changes due to the contact discontinuity.  This is what we would expect, as drivers spread out as they accelerate to catch up with the cars ahead.  On the other hand, the PW model predicts that the middle state will have a greater density than the left state but a smaller velocity.  This is opposite of what we would expect.
 
 In the second example, we consider the case where there are no cars on the left.  Once again the AR model predicts what we would expect.  Here the cars continue to move to the right at a constant velocity, while the state on the left remains zero.  Note that in Clawpack solutions the density and velocity are undefined in the middle, but that this is a result of numerical issues.  In reality they should both be zero.  The PW method again fails to produce reasonable results.  Not only does it predict negative velocities, but we can see from the density plot that some cars have in fact moved backwards into the left region.  While it would make sense for fluids to act this way, we do not expect drivers to start moving in reverse when they see that nobody is behind them!
+
+\begin{figure}[H]
+ \centering
+ \subfigure[Solution from the AR model. The transition from $q_l$ to $q_r$ is first a shock and then a contact discontinuity.]{
+  \includegraphics[width=70mm]{../MatlabCode/Images/AR_example1.jpg}
+   }
+    \subfigure[Solution from the PW model.  The transition from $q_l$ to $q_r$ is first a shock and then a rarefaction wave. ]{
+  \includegraphics[width=70mm]{../MatlabCode/Images/PW_example1.jpg}
+   }
+ \caption[Optional caption for list of figures]
+ {Solutions to the Riemann problem for example 1 from the AR and PW models. The middle state is denoted by $q_m$.}
+  \label{fig:example1}
+\end{figure}
+
+\begin{figure}[H]
+ \centering
+ \subfigure[Solution from the AR model. The transition from $q_l$ to $q_r$ is a contact discontinuity,  shown in blue, there is no middle state.]{
+  \includegraphics[width=70mm]{../MatlabCode/Images/AR_example2.jpg}
+   }
+ \subfigure[Solution from the PW model. The transition from $q_l$ to $q_r$ is a rarefaction wave, shown in dark green, there is no middle state.]{
+  \includegraphics[width=70mm]{../MatlabCode/Images/PW_example2.jpg}
+   }
+ \caption[Optional caption for list of figures]
+ {Solutions to the Riemann problem for example 2 from the AR and PW models.}
+  \label{fig:example2}
+\end{figure}
 
 \begin{figure}[H]
  \centering

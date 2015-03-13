@@ -123,7 +123,7 @@ elseif (model == 2)
             
             rv1_loci(h,k) = rho(k)*v_star(h) + var;
             rv2_loci(h,k) = rho(k)*v_star(h) - var;
-            
+
             rv1_int(h,k) = rho(k)*(v_star(h) ...
                 + (2/(gamma-1))*(sqrt(pprime(rho_star(h)))...
                 - sqrt(pprime(rho(k)))));

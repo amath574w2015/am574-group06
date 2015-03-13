@@ -13,12 +13,15 @@ rho = 0:0.001:5;
 size_font = 20;
 
 % Loop plots both examples
-for example = 1:2
+for example = 1:3
     figure
     % Setting up data for the two points ql and qr
     if (example == 1)
         v_star = [0.2 .3];
         rho_star = [0.3 .4];
+    elseif (example == 2)
+        v_star = [0.05 .3];
+        rho_star = [0.05 .4];
     else
         v_star = [0 .3];
         rho_star = [0 .4];
@@ -140,6 +143,14 @@ for example = 1:2
         cd export_fig_code
         export_fig( gcf, ...      % figure handle
             '../Images/PW_example1',... % name of output file
+            '-painters', ...      % renderer
+            '-jpg', ...           % file format
+            '-r72' );             % resolution in dpi
+        cd ..
+    elseif (example == 2)
+        cd export_fig_code
+        export_fig( gcf, ...      % figure handle
+            '../Images/PW_example2_smallql',... % name of output file
             '-painters', ...      % renderer
             '-jpg', ...           % file format
             '-r72' );             % resolution in dpi
