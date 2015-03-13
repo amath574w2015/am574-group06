@@ -45,7 +45,18 @@ subroutine rp1(maxmx,meqn,mwaves,maux,mbc,mx,ql,qr,auxl,auxr,wave,s,amdq,apdq)
     do 30 i=2-mbc,mx+mbc
 
     !     # compute  averaged quantities:
-        rbar = 0.5d0*(qr(1,i-1) + ql(1,i))
+        if (0.0d0 < qr(1,i-1)) then
+            rl = qr(1,i-1)
+        else
+            rl = 0.0d0
+        endif
+        if (0.0d0 < ql(1,i)) then
+            rr = ql(1,i)
+        else
+            rr = 0.0d0
+        endif
+
+        rbar = 0.5d0*(rl + rr)
         pbar = gamma*rbar**(gamma-1.0d0)
         ubar = 0.5d0*(qr(2,i-1) + ql(2,i))
 
