@@ -8,7 +8,7 @@ While the Lighthill-Whitham-Richards traffic flow model behaves well macroscopic
 
 Our presentation can be found here:
 * [presentation.pdf](Presentation/presentation.pdf)
-* To find it in the repository, go to the Presentation folder and open the Presentation.pdf file.
+* To find it in the repository, go to the Presentation folder and open the presentation.pdf file.
 
 Our final paper can be found here: 
 * [FinalPaper.pdf](FinalPaper/FinalPaper.pdf)
