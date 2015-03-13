@@ -354,7 +354,10 @@ anywhere in the plane since $\lambda_2$ is linearly degenerate.
 % Examples
 \section{Examples}
 
-\begin{table}[t]
+Reproducing the Riemann problems found in \cite{AwRascle2000}, we consider two different examples. The variables used in these two examples are shown in Table \ref{table:1}.
+
+\vspace{-2ex}
+\begin{table}[H]
 \caption{Initial values used in examples 1 and 2.}
 \begin{center}
 \begin{tabular}{| c | c c  c c|}
@@ -369,19 +372,16 @@ Example 2 & 0 & 0 & 0.3 & 0.4\\
  \label{table:1}
 \end{table}
 
-Reproducing the Riemann problems found in \cite{AwRascle2000}, we consider two different examples. The variables used in these two examples are shown in Table \ref{table:1}.
-
+\vspace{-4ex}
 In both examples the density and velocity are greater in the right state than in the left state.  This corresponds to the situation considered by Aw and Rascle that motivated the use of the convective derivative.  In the first example, we see that the AR model predicts that the density of the middle state is less than both left or right states, but that the velocity increases steadily from left state to the middle state and then remains constant while the density changes due to the contact discontinuity.  This is what we would expect, as drivers spread out as they accelerate to catch up with the cars ahead.  On the other hand, the PW model predicts that the middle state will have a greater density than the left state but a smaller velocity.  This is opposite of what we would expect.
-
-In the second example, we consider the case where there are no cars on the left.  Once again the AR model predicts what we would expect.  Here the cars continue to move to the right at a constant velocity, while the state on the left remains zero.  Note that in Clawpack solutions the density and velocity are undefined in the middle, but that this is a result of numerical issues.  In reality they should both be zero.  The PW method again fails to produce reasonable results.  Not only does it predict negative velocities, but we can see from the density plot that some cars have in fact moved backwards into the left region.  While it would make sense for fluids to act this way, we do not expect drivers to start moving in reverse when they see that nobody is behind them!
 
 \begin{figure}[H]
  \centering
  \subfigure[Solution from the AR model. The transition from $q_l$ to $q_r$ is first a shock and then a contact discontinuity.]{
-  \includegraphics[width=70mm]{../MatlabCode/Images/AR_example1.jpg}
+  \includegraphics[width=60mm]{../MatlabCode/Images/AR_example1.jpg}
    }
     \subfigure[Solution from the PW model.  The transition from $q_l$ to $q_r$ is first a shock and then a rarefaction wave. ]{
-  \includegraphics[width=70mm]{../MatlabCode/Images/PW_example1.jpg}
+  \includegraphics[width=60mm]{../MatlabCode/Images/PW_example1.jpg}
    }
  \caption[Optional caption for list of figures]
  {Solutions to the Riemann problem for example 1 from the AR and PW models. The middle state is denoted by $q_m$.}
@@ -390,11 +390,26 @@ In the second example, we consider the case where there are no cars on the left.
 
 \begin{figure}[H]
  \centering
+ \subfigure[Solution from the AR model.]{
+  \includegraphics[width=65mm]{../ClawpackCode/AR/ARexample1.png}
+   }
+ \subfigure[Solution from the PW model.]{
+  \includegraphics[width=65mm]{../ClawpackCode/PW/PWexample1.png}
+   }
+ \caption[Optional caption for list of figures]
+ {Solutions to the Riemann problem for example 1 computed in Clawpack.}
+  \label{fig:example1_PW}
+\end{figure}
+
+In the second example, we consider the case where there are no cars on the left.  Once again the AR model predicts what we would expect.  Here the cars continue to move to the right at a constant velocity, while the state on the left remains zero.  Note that in Clawpack solutions the density and velocity are undefined in the middle, but that this is a result of numerical issues.  In reality they should both be zero.  The PW method again fails to produce reasonable results.  Not only does it predict negative velocities, but we can see from the density plot that some cars have in fact moved backwards into the left region.  While it would make sense for fluids to act this way, we do not expect drivers to start moving in reverse when they see that nobody is behind them!
+
+\begin{figure}[H]
+ \centering
  \subfigure[Solution from the AR model. The transition from $q_l$ to $q_r$ is a contact discontinuity,  shown in blue, there is no middle state.]{
-  \includegraphics[width=70mm]{../MatlabCode/Images/AR_example2.jpg}
+  \includegraphics[width=60mm]{../MatlabCode/Images/AR_example2.jpg}
    }
  \subfigure[Solution from the PW model. The transition from $q_l$ to $q_r$ is a rarefaction wave, shown in dark green, there is no middle state.]{
-  \includegraphics[width=70mm]{../MatlabCode/Images/PW_example2.jpg}
+  \includegraphics[width=60mm]{../MatlabCode/Images/PW_example2.jpg}
    }
  \caption[Optional caption for list of figures]
  {Solutions to the Riemann problem for example 2 from the AR and PW models.}
@@ -404,27 +419,14 @@ In the second example, we consider the case where there are no cars on the left.
 \begin{figure}[H]
  \centering
  \subfigure[Solution from the AR model.]{
-  \includegraphics[width=70mm]{../ClawpackCode/AR/ARexample1.png}
+  \includegraphics[width=65mm]{../ClawpackCode/AR/ARexample2.png}
    }
  \subfigure[Solution from the PW model.]{
-  \includegraphics[width=70mm]{../ClawpackCode/PW/PWexample1.png}
-   }
- \caption[Optional caption for list of figures]
- {Solutions to the Riemann problem for example 1 computed in Clawpack.}
-  \label{fig:example2}
-\end{figure}
-
-\begin{figure}[H]
- \centering
- \subfigure[Solution from the AR model.]{
-  \includegraphics[width=70mm]{../ClawpackCode/AR/ARexample2.png}
-   }
- \subfigure[Solution from the PW model.]{
-  \includegraphics[width=70mm]{../ClawpackCode/PW/PWexample2.png}
+  \includegraphics[width=65mm]{../ClawpackCode/PW/PWexample2.png}
    }
  \caption[Optional caption for list of figures]
  {Solutions to the Riemann problem for example 2 computed in Clawpack.}
-  \label{fig:example2}
+  \label{fig:example2_PW}
 \end{figure}
 
 \section{Conclusion}
