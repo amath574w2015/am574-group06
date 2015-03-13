@@ -9,3 +9,7 @@ While the Lighthill-Whitham-Richards traffic flow model behaves well macroscopic
 Our draft can be found here:
 * [Draft.pdf](FirstDraftMaterials/Draft.pdf)
 * To find it in the repository, go to the FirstDraftMaterials folder and open the Draft.pdf file.
+
+Our final paper can be found here: 
+* [FinalPaper.pdf](FinalPaper/FinalPaper.pdf)
+* To find it in the repository, go to the FinalPaper folder and open the FinalPaper.pdf file.
