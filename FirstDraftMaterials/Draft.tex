@@ -33,7 +33,7 @@ In addition to considering the PW model, we also take at a look a more successfu
 We start by considering a first order (one equation) model of traffic flow on a one-way road without any exits, entrances, or passing.  In this case, we can expect that the number of cars will be conserved, so we can use the equation for conservation of mass (with density $\rho$ and velocity $v$):
 
 \begin{enumerate}[(a)]
-\item Integral form of equation: $\displaystyle \frac{d}{dt} \int_{x_1}^{x_2} \rho \, dt = -\Big[ f( \rho ) \Big]_{x_1}^{x_2}$
+\item Integral form of equation: $\displaystyle \frac{d}{dt} \int_{x_1}^{x_2} \rho \, dx = -\Big[ f( \rho ) \Big]_{x_1}^{x_2}$
 \item Differential form of equation: $\rho_t + f( \rho )_x = \rho_t + \Big( \rho V(\rho) \Big)_x = 0$
 \end{enumerate}
 
@@ -47,7 +47,7 @@ The LWR model uses the flux function $f(\rho) = \rho V(\rho)$, where $V(\rho)$ r
 Another approach to improving the LWR model would be to use a second order (two equation) model.  Since cars can be thought of as a compressible fluid, we can use equations for conservation of mass (above) and conservation of momentum, $\rho v$, used to model compressible fluid flow:
 
 \begin{enumerate}[(a)]
-\item Integral form of equation: $\displaystyle \frac{d}{dt} \int_{x_1}^{x_2} \rho v \, dt = -\Big[ f( \rho v ) \Big]_{x_1}^{x_2}$
+\item Integral form of equation: $\displaystyle \frac{d}{dt} \int_{x_1}^{x_2} \rho v \, dx = -\Big[ f( \rho v ) \Big]_{x_1}^{x_2}$
 \item Differential form of equation: $(\rho v)_t + f( \rho v )_x = (\rho v)_t + \Big( \rho v^2 + p(\rho) \Big)_x = 0$
 \end{enumerate}
 
@@ -112,7 +112,7 @@ for $\lambda_2$.
   \label{fig:PW_curves}
 \end{figure}
 
-Restrictions on the way that $\lambda$ must vary across a wave allow us to identify the regions of the Hugoniot loci and integral curves that are valid for any given point. When traveling across a shock from a left state, $q_l$, to a right state $q_r$, $\lambda$ must decrease. When traveling across a rarefaction wave from a left state, $q_l$, to a right state $q_r$, $\lambda$ must increase. In Figure \ref{fig:PW_curves} (c) and (d) we see the Hugoniot loci and integral curves for this system with the contour lines for $\lambda_1$ and $\lambda_2$. Using these plots, we can determine which areas of the curves are valid shocks and which are valid rarefaction waves. Figure \ref{fig:PW_curves} (e) and (d) shows the points $q_l$ and $q_r$, respectively, with only the valid waves displayed. For these plots,
+Restrictions on the way that $\lambda$ must vary across a wave allow us to identify the regions of the Hugoniot loci and integral curves that are valid for any given point. When traveling across a shock from a left state, $q_l$, to a right state $q_r$, $\lambda$ must decrease. When traveling across a rarefaction wave from a left state, $q_l$, to a right state $q_r$, $\lambda$ must increase. In Figure \ref{fig:PW_curves} (c) and (d) we see the Hugoniot loci and integral curves for this system with the contour lines for $\lambda_1$ and $\lambda_2$. Using these plots, we can determine which areas of the curves are valid shocks and which are valid rarefaction waves. Figure \ref{fig:PW_curves} (e) and (f) shows the points $q_l$ and $q_r$, respectively, with only the valid waves displayed. For these plots,
 $q_* = (\rho_*,\rho_*v_*) = (0.2, 0.04)$ and $\gamma = 0.2$. 
 Here, shocks are shown in red or magenta and rarefaction waves are shown in either light or dark green.
 
@@ -344,7 +344,7 @@ Restrictions on the way that $\lambda$ must vary across a wave allow us to ident
 Therefore, it is important to take into account the contour lines of $\lambda$ when 
 looking at the loci and integral curves. Figure \ref{fig:AR_validity}(a) 
 shows the $\lambda_1$-curves in the $M$ plane,
-with the contour lines of $\lambda_1$ shown in magenta. This information is used
+with the contour lines of $\lambda_1$ shown in cyan. This information is used
 to determine which areas of the $\lambda_1$ curves are valid shock waves and which
 are valid rarefaction waves. The rest of the subfigures show the regions of validity for 
 specific points $q_*$, depending on whether $q_* = q_l$ or $q_* = q_r$. For these plots,
@@ -401,7 +401,9 @@ In both examples the density and velocity are greater in the right state than in
   \label{fig:example1_PW}
 \end{figure}
 
-In the second example, we consider the case where there are no cars on the left.  Once again the AR model predicts what we would expect.  Here the cars continue to move to the right at a constant velocity, while the state on the left remains zero.  Note that in Clawpack solutions the density and velocity are undefined in the middle, but that this is a result of numerical issues.  In reality they should both be zero.  The PW method again fails to produce reasonable results.  Not only does it predict negative velocities, but we can see from the density plot that some cars have in fact moved backwards into the left region.  While it would make sense for fluids to act this way, we do not expect drivers to start moving in reverse when they see that nobody is behind them!
+In the second example, we consider the case where there are no cars on the left. In figure \ref{fig:example2}, note that there are two valid curves for both models. In order to determine which curve is the correct one to follow, we considered a case when we had a very small density in the left state (rather than a zero density) and then considered the limit as the density on the left went to zero. This analysis made it clear that for the AR model the correct curve to follow is the contact discontinuity between $q_l$ and $q_r$, and for the PW model the correct curve to follow is the integral curve between $q_l$ and $q_r$.
+
+Once again the AR model predicts what we would expect.  Here the cars continue to move to the right at a constant velocity, while the state on the left remains zero. The PW method again fails to produce reasonable results.  Not only does it predict negative velocities, but we can see from the density plot that some cars have in fact moved backwards into the left region.  While it would make sense for fluids to act this way, we do not expect drivers to start moving in reverse when they see that nobody is behind them!
 
 \begin{figure}[H]
  \centering
